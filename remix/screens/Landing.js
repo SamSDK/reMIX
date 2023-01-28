@@ -13,11 +13,14 @@ export default function Landing() {
         <Text>
             'Hello'
         </Text>
+        <AppButton style={styles.btn} title='hello'/>
     </View>
 
   </Screen>;
 }
 
 const styles = StyleSheet.create({
-  container: {},
+  btn: {
+    
+  },
 });
