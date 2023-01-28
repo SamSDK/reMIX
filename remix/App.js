@@ -1,38 +1,29 @@
-/* eslint-disable react/react-in-jsx-scope */
-import { StyleSheet } from 'react-native';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import colors from './config/colors';
-
+import { createStackNavigator } from '@react-navigation/stack';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View } from 'react-native';
+import Home from './screens/Home';
 import Landing from './screens/Landing';
+import User from './screens/User';
 
-const TabScreen = () => {
-  const Tab = createBottomTabNavigator();
-  return (
-    <Tab.Navigator
-      screenOptions={({ route }) => ({
-  
-      })}
-    ></Tab.Navigator>
-  );
-};
+const Stack = createStackNavigator();
 
 export default function App() {
-  const Stack = createNativeStackNavigator();
-
   return (
     <NavigationContainer>
       <Stack.Navigator
         initialRouteName="Landing"
-        screenOptions={{ headerShown: false }}
+        // screenOptions={{ headerShown: false }}
       >
+        <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Landing" component={Landing} />
+        <Stack.Screen name="User" component={User} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
-// eslint-disable-next-line no-unused-vars
 const styles = StyleSheet.create({
   container: {
     flex: 1,

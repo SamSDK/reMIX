@@ -5,17 +5,10 @@ import Screen from '../components/Screen';
 import { useNavigation } from '@react-navigation/native';
 import colors from '../config/colors';
 
-export default function Landing() {
+export default function User() {
   const navigation = useNavigation();
 
-  return <Screen>
-    <View>
-        <Text>
-            'Hello'
-        </Text>
-    </View>
-
-  </Screen>;
+  return <Screen></Screen>;
 }
 
 const styles = StyleSheet.create({
