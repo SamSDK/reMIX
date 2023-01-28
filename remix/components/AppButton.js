@@ -24,13 +24,12 @@ function AppButton({
 
 const styles = StyleSheet.create({
   button: {
-    borderRadius: 0,
+    borderRadius: 10,
     alignSelf: 'center',
     alignItems: 'center',
     padding: 12,
     width: '100%',
-    marginVertical: 20,
-    marginLeft: "1%",
+    marginVertical: 10,
     backgroundColor: colors.primary,
   },
   text: {
