@@ -9,7 +9,7 @@ export default function Home() {
   const navigation = useNavigation();
 
   return <Screen>
-    
+    <Text>Home</Text>
   </Screen>;
 }
 
