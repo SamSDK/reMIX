@@ -9,12 +9,10 @@ export default function Landing() {
   const navigation = useNavigation();
 
   return <Screen 
-    // backgroundImage={require('../assets/images/remix.png')}
-    >
-    <View style={{flex: 1, flexDirection: "column", justifyContent: 'center'}}>
-        <View style={{width: '50%'}}>
-        <Image style={styles.logo} resizeMode='center' source={require('../assets/images/remix.png')}/>
-        </View>
+  // backgroundImage={require('../assets/images/remix.png')}
+  >
+    <View style={{flex: 1, width: "100%", marginTop: 50, alignItems: "center"}}>
+        <Image style={styles.logo} source={require('../assets/images/remix.png')}/>
         <AppButton style={styles.btn} title='Get Started'/>
     </View>
 
@@ -23,16 +21,10 @@ export default function Landing() {
 
 const styles = StyleSheet.create({
   btn: {
-    position: 'absolute',
     width: '50%',
   },
   logo: {
-    // flex:0,
-    // position: 'absolute',
-    // justifyContent: 'center',
-    // backgroundColor: 'red',
-    // width: "100%",
-    // height: "60%",
-    // right: "120%",
+    width: 200,
+    height: 200
   },
 });

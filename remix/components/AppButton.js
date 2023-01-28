@@ -13,7 +13,6 @@ function AppButton({
     <TouchableOpacity
       style={[
         styles.button,
-        styles.shadow,
         style,
       ]}
       onPress={onPress}
@@ -25,12 +24,12 @@ function AppButton({
 
 const styles = StyleSheet.create({
   button: {
-    borderRadius: 100,
+    borderRadius: 0,
     alignSelf: 'center',
     alignItems: 'center',
     padding: 12,
-    width: '90%',
-    marginVertical: 40,
+    width: '100%',
+    marginVertical: 20,
     marginLeft: "1%",
     backgroundColor: colors.primary,
   },
@@ -39,14 +38,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     fontFamily: Platform.OS === 'ios' ? 'Helvetica Neue' : 'sans-serif',
-  },
-  shadow: {
-    shadowColor: "black", // IOS
-    shadowOffset: { height: 1, width: 1 }, // IOS
-    shadowOpacity: 0.2, // IOS
-    shadowRadius: 3, //IOS
-    elevation: 4, // Android
-  },
+  }
 });
 
 export default AppButton
