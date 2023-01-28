@@ -8,7 +8,9 @@ import colors from '../config/colors';
 export default function Home() {
   const navigation = useNavigation();
 
-  return <Screen></Screen>;
+  return <Screen>
+    
+  </Screen>;
 }
 
 const styles = StyleSheet.create({

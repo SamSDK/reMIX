@@ -6,6 +6,7 @@ function AppButton({
   title,
   onPress,
   color = 'primary',
+  disabled = false,
   style,
 }) {
   return (
@@ -31,6 +32,7 @@ const styles = StyleSheet.create({
     width: '90%',
     marginVertical: 40,
     marginLeft: "1%",
+    backgroundColor: colors.primary,
   },
   text: {
     color: colors.white,
