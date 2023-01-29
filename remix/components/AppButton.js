@@ -24,17 +24,17 @@ function AppButton({
 
 const styles = StyleSheet.create({
   button: {
-    borderRadius: 10,
+    borderRadius: 60,
     alignSelf: 'center',
     alignItems: 'center',
-    padding: 12,
+    padding: 20,
     width: '100%',
     marginVertical: 10,
     backgroundColor: colors.primary,
   },
   text: {
     color: colors.white,
-    fontSize: 18,
+    fontSize: 24,
     fontWeight: 'bold',
     fontFamily: Platform.OS === 'ios' ? 'Helvetica Neue' : 'sans-serif',
   }

@@ -4,7 +4,6 @@ import AppButton from '../components/AppButton';
 import Screen from '../components/Screen';
 import { useNavigation } from '@react-navigation/native';
 import colors from '../config/colors';
-import RecipePill from '../components/RecipePill';
 
 export default function Landing() {
   const navigate = useNavigation().navigate;
@@ -14,10 +13,10 @@ export default function Landing() {
   }
 
   return <Screen 
-  // backgroundImage={require('../assets/images/remix.png')}
+  backgroundImage={require('../assets/images/seamless.webp')}
   >
     <View style={{flex: 1, width: "100%", marginTop: 50, justifyContent: "space-between", alignItems: "center"}}>
-        <View style={{backgroundColor: "black", padding: 30, borderRadius: "200%"}}>
+        <View style={{backgroundColor: "black", padding: 30, borderRadius: 200}}>
           <Image style={styles.logo} source={require('../assets/images/remix.png')}/>
         </View>
         <AppButton onPress={handleClick} style={styles.btn} title='Get Started'/>
@@ -29,11 +28,11 @@ export default function Landing() {
 const styles = StyleSheet.create({
   btn: {
     width: '50%',
-    marginBottom: 100
+    marginBottom: 140
   },
   logo: {
-    width: 150,
-    height: 150,
+    width: 200,
+    height: 200,
     tintColor: "white"
   },
 });

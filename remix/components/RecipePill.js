@@ -11,9 +11,9 @@ import {
 import colors from '../config/colors';
 import { Ionicons } from '@expo/vector-icons';
 
-function RecipePill({ image, title, organizer, date, onPress }) {
+function RecipePill({ image, title, recipe, date, onPress }) {
   return (
-    <TouchableOpacity style={[styles.eventBanner]} onPress={onPress}>
+    <TouchableOpacity style={[styles.recipe]} onPress={onPress}>
       <Image
         source={image}
         style={{
@@ -29,33 +29,21 @@ function RecipePill({ image, title, organizer, date, onPress }) {
         <Text numberOfLines={1} style={styles.text}>
           {title.length < 18 ? `${title}` : `${title.substring(0, 16)}...`}
         </Text>
-        <Text numberOfLines={1} style={{ fontSize: 16, color: '#969696' }}>
-          By{' '}
-          {organizer.length < 22
-            ? `${organizer}`
-            : `${organizer.substring(0, 20)}...`}
-        </Text>
-        <View style={styles.date}>
-          <Ionicons
-            name='ios-calendar-outline'
-            size={20}
-            color={colors.primary}
-          />
-          <Text style={{ marginLeft: 10 }}>{date}</Text>
-        </View>
       </View>
     </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
-  eventBanner: {
+  recipe: {
     backgroundColor: colors.white,
     borderRadius: 16,
     alignItems: 'center',
     height: 100,
     flexDirection: 'row',
     marginBottom: 20,
+    width: "90%",
+    left: "2.5%",
     shadowOffset: { height: 1, width: 1 }, // IOS
     shadowOpacity: 0.2, // IOS
     shadowRadius: 3, //IOS
@@ -67,10 +55,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontFamily: Platform.OS === 'ios' ? 'Helvetica Neue' : 'sans-serif',
     marginTop: '2%',
-  },
-  date: {
-    flexDirection: 'row',
-    marginTop: 8,
   },
 });
 
