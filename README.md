@@ -1,2 +1,2 @@
-# ReMix
+# Remix
 Enhance your smoothie experience.
