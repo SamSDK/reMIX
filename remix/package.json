@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@react-navigation/stack": "^6.3.11",
+    "axios": "^1.2.6",
     "expo": "~47.0.12",
     "expo-status-bar": "~1.4.2",
     "react": "18.1.0",

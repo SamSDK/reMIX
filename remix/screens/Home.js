@@ -6,31 +6,30 @@ import { useNavigation } from '@react-navigation/native';
 import colors from '../config/colors';
 import RecipePill from '../components/RecipePill';
 import { SearchBar } from 'react-native-elements';
-
+import axios from 'axios';
 
 export default function Home() {
   const navigation = useNavigation();
   const [searchQuery, setSearchQuery] = React.useState('');
+  const [data, setData] = React.useState([]);
+
+  function shuffle(array) {
+    return array.sort(() => Math.random() - 0.5);
+  }
+
+  const getData = async () => {
+    axios.get(`http://10.217.15.13:3008/api/getAll`).then(doc => {
+      setData(shuffle(doc.data).splice(0, 15));
+    }).catch(e => {
+      console.log(e);
+    });
+  };
+
+  React.useEffect(() => {
+    getData();
+  }, []);
 
   const onChangeSearch = query => setSearchQuery(query);
-
-  const data = [
-    {
-      title: "Green smoothie"
-    },
-    {
-      title: "Red smoothie"
-    },
-    {
-      title: "Blue smoothie"
-    },
-    {
-      title: "Purple smoothie"
-    },
-    {
-      title: "Pink smoothie"
-    }
-  ]
 
   return <Screen>
     <SearchBar
@@ -66,11 +65,12 @@ export default function Home() {
         </TouchableOpacity>
       </View>
       <View style={{padding: 20, paddingTop: 20, width: "100%"}}>
-        <Text style={{fontWeight: "bold", fontSize: 28, alignSelf: "flex-start", color: colors.darkerGrey}}>Browse Recipes</Text>
+        <Text style={{fontWeight: "bold", fontSize: 24, alignSelf: "flex-start", color: colors.darkerGrey}}>Browse Recipes</Text>
         <FlatList
           data={data}
-          renderItem={({item}) => <RecipePill title={item.title} />}
-          keyExtractor={item => item.id}
+          contentContainerStyle={{paddingBottom: 200}}
+          renderItem={({item}) => <RecipePill tags={item.tags} title={item.name}/>}
+          keyExtractor={item => item._id}
         />
       </View>
     </View>

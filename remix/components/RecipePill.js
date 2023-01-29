@@ -7,11 +7,12 @@ import {
   Platform,
   Image,
   View,
+  ScrollView
 } from 'react-native';
 import colors from '../config/colors';
 import { Ionicons } from '@expo/vector-icons';
 
-function RecipePill({ image, title, recipe, date, onPress }) {
+function RecipePill({ image, tags, title, onPress }) {
   return (
     <TouchableOpacity style={[styles.recipe]} onPress={onPress}>
       <Image
@@ -26,10 +27,17 @@ function RecipePill({ image, title, recipe, date, onPress }) {
           marginLeft: 16
         }}
       />
-      <View>
-        <Text numberOfLines={1} style={styles.text}>
-          {title.length < 18 ? `${title}` : `${title.substring(0, 16)}...`}
+      <View style={{width: "100%"}}>
+        <Text style={styles.text}>
+          {title}
         </Text>
+        <View horizontal={true} style={{flexDirection: "row"}}>
+          {tags.map(item => {
+            return (
+              <Text style={{height: 30, justifyContent: "center", alignItems: "center", paddingVertical: 4, paddingHorizontal: 8, borderWidth: 1, borderRadius: 5, borderColor: colors.darkGrey, marginHorizontal: 3, marginVertical: 5}}>{item}</Text>
+            )
+          })}
+        </View>
       </View>
     </TouchableOpacity>
   );
@@ -49,10 +57,9 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#100101',
-    fontSize: 18,
     fontWeight: 'bold',
     fontFamily: Platform.OS === 'ios' ? 'Helvetica Neue' : 'sans-serif',
-    marginTop: '2%',
+    marginTop: '2%'
   },
 });
 

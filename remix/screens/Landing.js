@@ -16,7 +16,7 @@ export default function Landing() {
   backgroundImage={require('../assets/images/seamless.webp')}
   >
     <View style={{flex: 1, width: "100%", marginTop: 50, justifyContent: "space-between", alignItems: "center"}}>
-        <View style={{backgroundColor: "black", padding: 30, borderRadius: 200}}>
+        <View style={{backgroundColor: "black", padding: 30, height: 250, width: 250, borderRadius: 500, justifyContent: "center", alignItems: "center"}}>
           <Image style={styles.logo} source={require('../assets/images/remix.png')}/>
         </View>
         <AppButton onPress={handleClick} style={styles.btn} title='Get Started'/>
@@ -31,8 +31,8 @@ const styles = StyleSheet.create({
     marginBottom: 140
   },
   logo: {
-    width: 200,
-    height: 200,
+    width: 160,
+    height: 120,
     tintColor: "white"
   },
 });
