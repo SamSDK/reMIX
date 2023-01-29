@@ -1,16 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import colors from '../config/colors';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
+
 function Tags({ name }) {
-  return (
-    <View>
-      <TouchableOpacity style={styles.tag}>
-        <Text style={styles.name}>{name}</Text>
-      </TouchableOpacity>
-    </View>
-  );
-}
+    const [isPressed, setIsPressed] = useState(false);
+  
+    return (
+      <View>
+        <TouchableOpacity
+          style={[styles.tag, isPressed ? { backgroundColor: 'black' } : {}]}
+          onPress={() => setIsPressed(!isPressed)}
+        >
+          <Text style={styles.name}>{name}</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+  
 
 export default Tags;
 

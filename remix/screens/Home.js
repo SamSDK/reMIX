@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, FlatList, TouchableOpacity, ImageBackground } from 'react-native';
 import AppButton from '../components/AppButton';
 import Screen from '../components/Screen';
 import { useNavigation } from '@react-navigation/native';
@@ -7,6 +7,7 @@ import colors from '../config/colors';
 import RecipePill from '../components/RecipePill';
 import { SearchBar, Overlay } from 'react-native-elements';
 import axios from 'axios';import Tags from '../components/Tags';
+// import BlurView from 'expo-blur';
 
 export default function Home() {
   
@@ -41,8 +42,9 @@ export default function Home() {
 
   return <Screen>
     <SearchBar
+      style={{borderRadius: 20, width: 2}}
       placeholder="Type Here..."
-      lightTheme
+      // lightTheme
       onChangeText={onChangeSearch}
       value={searchQuery}
     />
@@ -54,14 +56,16 @@ export default function Home() {
         <AppButton onPress={toggleOverlay} style={styles.btn} title="Filter"/>
         <AppButton style={styles.btn} title='Make your own recipe +'/>
       </View>
-      <View style={{padding: 20, paddingTop: 20, width: "100%"}}>
-        <Text style={{fontWeight: "bold", fontSize: 24, alignSelf: "flex-start", color: colors.darkerGrey}}>Browse Recipes</Text>
+        {/* <ImageBackground resizeMode='' source={require("../assets/images/seamless.webp")}> */}
+      <View style={{padding: 20, paddingTop: 20, width: "100%",}}>
+
+        <Text style={{fontWeight: "bold", fontSize: 24, alignSelf: "flex-start", color: colors.darkerGrey, paddingBottom: 10}}>Browse Recipes</Text>
         <FlatList
           data={data}
           contentContainerStyle={{paddingBottom: 200}}
           renderItem={({item}) => <RecipePill info={item.info} tags={item.tags} title={item.name}/>}
           keyExtractor={item => item._id}
-        />
+          />
         <Overlay overlayStyle={styles.modal} isVisible={visible} onBackdropPress={toggleOverlay}>
           <Text style={{fontSize: 36, left: 20, top: 25 }}>Filters</Text>
           <Text style={{fontSize: 22, left: 20, top: 35 }}>Ingredients</Text>
@@ -86,15 +90,16 @@ export default function Home() {
           <AppButton style={{width: "90%", height: 70}} title="Apply"/>
       </Overlay>
       </View>
+{/* </ImageBackground> */}
     </View>
   </Screen>;
 }
 
 const styles = StyleSheet.create({
   modal: {
-   width: '90%',
-   height: '75%',
-   borderRadius: 48,
+    width: '90%',
+    height: '75%',
+    borderRadius: 48,
   },
   btn: {
     width: "90%",

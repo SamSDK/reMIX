@@ -50,12 +50,17 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     borderRadius: 16,
     borderColor: colors.primary,
-    borderWidth: 2,
+    // borderWidth: 2,
     alignItems: 'center',
     height: 100,
     flexDirection: 'row',
     marginTop: 20,
-    width: "100%"
+    width: "100%",
+    shadowColor: "black", // IOS
+    shadowOffset: { height: 2, width: 1 }, // IOS
+    shadowOpacity: 0.1, // IOS
+    shadowRadius: 2, //IOS
+    elevation: 4, // Android
   },
   text: {
     color: '#100101',
