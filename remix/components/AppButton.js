@@ -31,15 +31,16 @@ const styles = StyleSheet.create({
     width: '100%',
     marginVertical: 10,
     backgroundColor: colors.primary,
-    // shadowColor: "black", // IOS
-    // shadowOffset: { height: 4, width: 1 }, // IOS
-    // shadowOpacity: 0.2, // IOS
-    // shadowRadius: 2, //IOS
-    // elevation: 4, // Android
+    shadowColor: "black", // IOS
+    shadowOffset: { height: 4, width: 1 }, // IOS
+    shadowOpacity: 0.2, // IOS
+    shadowRadius: 2, //IOS
+    elevation: 4, // Android
   },
   text: {
     color: colors.white,
     fontSize: 18,
+    fontWeight: '700',
     fontFamily: Platform.OS === 'ios' ? 'Helvetica Neue' : 'sans-serif',
   }
 });
