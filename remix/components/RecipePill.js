@@ -15,14 +15,15 @@ function RecipePill({ image, title, recipe, date, onPress }) {
   return (
     <TouchableOpacity style={[styles.recipe]} onPress={onPress}>
       <Image
-        source={image}
+        source={{uri: "https://cdn.iconscout.com/icon/free/png-256/smoothie-3754965-3142640.png"}}
         style={{
           left: 0,
-          width: 120,
-          height: 100,
+          width: 50,
+          height: 50,
           borderBottomLeftRadius: 16,
           borderTopLeftRadius: 16,
           marginRight: 16,
+          marginLeft: 16
         }}
       />
       <View>
@@ -38,16 +39,13 @@ const styles = StyleSheet.create({
   recipe: {
     backgroundColor: colors.white,
     borderRadius: 16,
+    borderColor: colors.primary,
+    borderWidth: 2,
     alignItems: 'center',
     height: 100,
     flexDirection: 'row',
-    marginBottom: 20,
-    width: "90%",
-    left: "2.5%",
-    shadowOffset: { height: 1, width: 1 }, // IOS
-    shadowOpacity: 0.2, // IOS
-    shadowRadius: 3, //IOS
-    elevation: 2, // Android
+    marginTop: 20,
+    width: "100%"
   },
   text: {
     color: '#100101',
