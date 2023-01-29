@@ -57,7 +57,7 @@ export default function Home() {
         <AppButton style={styles.btn} title='Make your own recipe +'/>
       </View>
         {/* <ImageBackground resizeMode='' source={require("../assets/images/seamless.webp")}> */}
-      <View style={{padding: 20, paddingTop: 20, width: "100%", backgroundColor colors.white}}>
+      <View style={{padding: 20, paddingTop: 20, width: "100%"}}>
 
         <Text style={{fontWeight: "bold", fontSize: 24, alignSelf: "flex-start", color: colors.darkerGrey, paddingBottom: 10}}>Browse Recipes</Text>
         <FlatList

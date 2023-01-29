@@ -21,6 +21,11 @@ export default function Landing() {
           marginTop: 50,
           justifyContent: 'space-between',
           alignItems: 'center',
+          shadowColor: "black", // IOS
+          shadowOffset: { height: 4, width: 1 }, // IOS
+          shadowOpacity: 0.2, // IOS
+          shadowRadius: 2, //IOS
+          elevation: 4, // Android
         }}
       >
         <View
