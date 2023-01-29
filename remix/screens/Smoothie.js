@@ -52,7 +52,7 @@ export default function Smoothie({ route, navigation }) {
             <Text style={{fontWeight: "bold", fontSize: 22}}>Tags</Text>
             <View style={{flexDirection: "row", marginTop: 20}}>
                 {item.tags.map(item => {
-                    return <Tags name={item}/>
+                    return <Tags selected={false} select={() => {}} name={item}/>
                 })}
             </View>
         </View>

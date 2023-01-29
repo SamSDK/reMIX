@@ -3,16 +3,25 @@ import colors from '../config/colors';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 
-function Tags({ name }) {
-    const [isPressed, setIsPressed] = useState(false);
-  
+function Tags(props) {
+    const [isPressed, setIsPressed] = useState(props.selected);
+
+    const handleSelect = () => {
+      setIsPressed(!isPressed);
+      if (isPressed) {
+        props.select(true);
+      } else {
+        props.select(false);
+      }
+    }
+
     return (
       <View>
         <TouchableOpacity
-          style={[styles.tag, isPressed ? { backgroundColor: 'black' } : {}]}
-          onPress={() => setIsPressed(!isPressed)}
+          style={[styles.tag, isPressed ? { backgroundColor: colors.primary } : {}]}
+          onPress={handleSelect}
         >
-          <Text style={styles.name}>{name}</Text>
+          <Text style={[styles.name, isPressed ? { color: colors.white } : {}]}>{props.name}</Text>
         </TouchableOpacity>
       </View>
     );
