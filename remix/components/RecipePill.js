@@ -11,12 +11,13 @@ import {
 } from 'react-native';
 import colors from '../config/colors';
 import { Ionicons } from '@expo/vector-icons';
+import smoothieIcon from '../assets/images/blender/Banana.png';
 
-function RecipePill({ image, tags, title, onPress }) {
+function RecipePill({ image, info, tags, title, onPress }) {
   return (
     <TouchableOpacity style={[styles.recipe]} onPress={onPress}>
       <Image
-        source={{uri: "https://cdn.iconscout.com/icon/free/png-256/smoothie-3754965-3142640.png"}}
+        source={smoothieIcon}
         style={{
           left: 0,
           width: 50,
@@ -24,7 +25,8 @@ function RecipePill({ image, tags, title, onPress }) {
           borderBottomLeftRadius: 16,
           borderTopLeftRadius: 16,
           marginRight: 16,
-          marginLeft: 16
+          marginLeft: 16,
+          tintColor: info.color
         }}
       />
       <View style={{width: "100%"}}>

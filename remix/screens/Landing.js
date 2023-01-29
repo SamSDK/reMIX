@@ -24,7 +24,7 @@ export default function Landing() {
         }}
       >
         <View
-          style={{ backgroundColor: 'black', padding: 30, borderRadius: 200 }}
+          style={{ backgroundColor: 'black', padding: 30, width: 250, height: 250, justifyContent: "center", alignItems: "center", borderRadius: 200 }}
         >
           <Image
             style={styles.logo}
