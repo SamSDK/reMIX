@@ -7,11 +7,13 @@ function Tags(props) {
     const [isPressed, setIsPressed] = useState(props.selected);
 
     const handleSelect = () => {
-      setIsPressed(!isPressed);
-      if (isPressed) {
-        props.select(true);
-      } else {
-        props.select(false);
+      if (props.canSelect) {
+        setIsPressed(!isPressed);
+        if (isPressed) {
+          props.select(true);
+        } else {
+          props.select(false);
+        }
       }
     }
 

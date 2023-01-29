@@ -6,6 +6,9 @@ import {
   FlatList,
   TouchableOpacity,
   ImageBackground,
+  Platform,
+  Keyboard,
+  TouchableWithoutFeedback
 } from 'react-native';
 import AppButton from '../components/AppButton';
 import Screen from '../components/Screen';
@@ -46,6 +49,12 @@ export default function Home() {
   const [selectedIngredientFilters, setSelectedIngredientFilters] =
     React.useState([]);
   const [selectedTagFilters, setSelectedTagFilters] = React.useState([]);
+  const [mixIngredients, setMixIngredients] = React.useState([]);
+  const [mixIngredientVal, setMixIngredientVal] = React.useState("");
+  const [mixTags, setMixTags] = React.useState([]);
+  const [mixTagsVal, setMixTagsVal] = React.useState("");
+  const [mixName, setMixName] = React.useState("");
+  const [mixDescription, setMixDescription] = React.useState("");
 
   function shuffle(array) {
     return array.sort(() => Math.random() - 0.5);
@@ -123,7 +132,7 @@ export default function Home() {
               paddingLeft: 20,
               borderBottomLeftRadius: 28,
               borderBottomRightRadius: 28,
-              shadowColor: "black", // IOS
+              shadowColor: "grey", // IOS
               shadowOffset: { height: 2, width: 1 }, // IOS
               shadowOpacity: 0.1, // IOS
               shadowRadius: 2, //IOS
@@ -164,6 +173,7 @@ export default function Home() {
               }}
             >
               <Tags
+                canSelect={true}
                 selected={
                   selectedIngredientFilters.includes('Spinach') ? true : false
                 }
@@ -180,6 +190,7 @@ export default function Home() {
                 name="Spinach"
               />
               <Tags
+                canSelect={true}
                 selected={
                   selectedIngredientFilters.includes('Kale') ? true : false
                 }
@@ -196,6 +207,7 @@ export default function Home() {
                 name="Kale"
               />
               <Tags
+                canSelect={true}
                 selected={
                   selectedIngredientFilters.includes('Frozen Bananas')
                     ? true
@@ -216,6 +228,7 @@ export default function Home() {
                 name="Frozen Bananas"
               />
               <Tags
+                canSelect={true}
                 selected={
                   selectedIngredientFilters.includes('Frozen Strawberries')
                     ? true
@@ -236,6 +249,7 @@ export default function Home() {
                 name="Frozen Strawberries"
               />
               <Tags
+                canSelect={true}
                 selected={
                   selectedIngredientFilters.includes('Peanut Butter')
                     ? true
@@ -256,6 +270,7 @@ export default function Home() {
                 name="Peanut Butter"
               />
               <Tags
+                canSelect={true}
                 selected={
                   selectedIngredientFilters.includes('Forzen Blueberries')
                     ? true
@@ -288,6 +303,7 @@ export default function Home() {
               }}
             >
               <Tags
+                canSelect={true}
                 selected={selectedTagFilters.includes('healthy')}
                 select={(isSelected) =>
                   !isSelected
@@ -299,6 +315,7 @@ export default function Home() {
                 name="healthy"
               />
               <Tags
+                canSelect={true}
                 selected={selectedTagFilters.includes('green')}
                 select={(isSelected) =>
                   !isSelected
@@ -310,6 +327,7 @@ export default function Home() {
                 name="green"
               />
               <Tags
+                canSelect={true}
                 selected={selectedTagFilters.includes('berries')}
                 select={(isSelected) =>
                   !isSelected
@@ -321,6 +339,7 @@ export default function Home() {
                 name="berries"
               />
               <Tags
+                canSelect={true}
                 selected={selectedTagFilters.includes('nut')}
                 select={(isSelected) =>
                   !isSelected
@@ -332,6 +351,7 @@ export default function Home() {
                 name="nut"
               />
               <Tags
+                canSelect={true}
                 selected={selectedTagFilters.includes('protein')}
                 select={(isSelected) =>
                   !isSelected
@@ -343,6 +363,7 @@ export default function Home() {
                 name="protein"
               />
               <Tags
+                canSelect={true}
                 selected={selectedTagFilters.includes('fruit')}
                 select={(isSelected) =>
                   !isSelected
@@ -371,7 +392,7 @@ export default function Home() {
 
                 setFilteredData(dataCopy);
               }}
-              style={{ width: '90%', height: 70 }}
+              style={{ width: '90%', height: 60 }}
               title="Apply"
             />
           </Overlay>
@@ -380,18 +401,53 @@ export default function Home() {
             isVisible={visible2}
             onBackdropPress={toggleOverlay2}
           >
-            <Text style={{ fontSize: 36, left: 20, top: 25 }}>
-              Add your Ingredients
-            </Text>
-            <AppInput style={{top: 100, left: 28}} placeholder="Name your Mix"></AppInput>
-            <AppButton
-              onPress={() => {
-                setVisible2(false);
-              }}
-              style={{ width: '90%', height: 70, top: 100 }}
-              title="Add"
-            />
-          </Overlay>
+            <TouchableWithoutFeedback onPress={() => {
+              Keyboard.dismiss()
+            }}>
+              <View>
+                <Text style={{ fontSize: 28, left: 20, top: 25 }}>
+                  Make your smoothie
+                </Text>
+
+                <Text style={{ left: 35, top: 60, fontWeight: "bold"}}>Ingredients</Text>
+                <AppInput onSubmitEditing={() => {
+                  var ingredientsList = mixIngredients;
+                  ingredientsList.push(mixIngredientVal);
+                  setMixIngredients(ingredientsList);
+                  setMixIngredientVal("");
+                }} style={{top: 60, left: 28}} value={mixIngredientVal} onChangeText={text => setMixIngredientVal(text)} placeholder='Add your ingredients'></AppInput>
+                <View style={{flexDirection: "row", top: 50, flexWrap: "wrap", paddingVertical: 10, paddingHorizontal: 30}}>
+                    {mixIngredients.map((item, index) => {
+                        return <Tags key={index} selected={false} select={() => {}} name={item}/>
+                    })}
+                </View>
+
+                <Text style={{ left: 35, top: 60, fontWeight: "bold"}}>Tags</Text>
+                <AppInput onSubmitEditing={() => {
+                  var tagsList = mixTags;
+                  tagsList.push(mixTagsVal);
+                  setMixTags(tagsList);
+                  setMixTagsVal("");
+                }} style={{top: 60, left: 28}} value={mixTagsVal} onChangeText={text => setMixTagsVal(text)} placeholder='Add tags'></AppInput>
+                <View style={{flexDirection: "row", flexWrap: "wrap", top: 50, paddingVertical: 10, paddingHorizontal: 30}}>
+                    {mixTags.map((item, index) => {
+                        return <Tags key={index} selected={false} select={() => {}} name={item}/>
+                    })}
+                </View>
+
+                <AppInput value={mixName} onChangeText={text => setMixName(text)} style={{top: 50, left: 28}} placeholder="Name your Mix"></AppInput>
+                <AppInput value={mixDescription} onChangeText={text => setMixDescription(text)} style={{top: 50, left: 28, height: 70}} placeholder="Give it a description"></AppInput>
+
+                <AppButton
+                  onPress={() => {
+                    setVisible2(false);
+                  }}
+                  style={{ width: '90%', height: 60, top: 40, marginBottom: 50 }}
+                  title="Blend!"
+                />
+                </View>
+              </TouchableWithoutFeedback>
+            </Overlay>
         </View>
         {/* </ImageBackground> */}
       </View>
@@ -402,8 +458,10 @@ export default function Home() {
 const styles = StyleSheet.create({
   modal: {
     width: '90%',
-    height: '75%',
-    borderRadius: 48,
+    minHeight: '75%',
+    height: "auto",
+    borderRadius: 45
+    
   },
   btn: {
     width: '90%',

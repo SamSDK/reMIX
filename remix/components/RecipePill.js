@@ -34,9 +34,9 @@ function RecipePill({ image, info, tags, title, onPress }) {
           {title}
         </Text>
         <View horizontal={true} style={{flexDirection: "row"}}>
-          {tags.map(item => {
+          {tags.map((item, index) => {
             return (
-              <Text style={{height: 30, justifyContent: "center", alignItems: "center", paddingVertical: 4, paddingHorizontal: 8, borderWidth: 1, borderRadius: 5, borderColor: colors.darkGrey, marginHorizontal: 3, marginVertical: 5}}>{item}</Text>
+              <Text key={index} style={{height: 30, justifyContent: "center", alignItems: "center", paddingVertical: 4, paddingHorizontal: 8, borderWidth: 1, borderRadius: 5, borderColor: colors.darkGrey, marginHorizontal: 3, marginVertical: 5}}>{item}</Text>
             )
           })}
         </View>

@@ -30,20 +30,20 @@ export default function Smoothie({ route, navigation }) {
             <View style={{flexDirection: "row", justifyContent: "space-between"}}>
                 <View>
                     <Text style={{fontWeight: "bold", fontSize: 18, marginTop: 10, color: colors.lightGrey}}>Solid</Text>
-                    {item.ingredients[0].map(item => {
-                        return <Text>{item}</Text>
+                    {item.ingredients[0].map((item, index) => {
+                        return <Text key={index}>{item}</Text>
                     })}
                 </View>
                 <View>
                     <Text style={{fontWeight: "bold", fontSize: 18, marginTop: 10, color: colors.lightGrey}}>Liquid</Text>
-                    {item.ingredients[1].map(item => {
-                        return <Text>{item}</Text>
+                    {item.ingredients[1].map((item, index) => {
+                        return <Text key={index}>{item}</Text>
                     })}
                 </View>
                 <View>
                     <Text style={{fontWeight: "bold", fontSize: 18, marginTop: 10, color: colors.lightGrey}}>Add ons</Text>
-                    {item.ingredients[2].map(item => {
-                        return <Text>{item}</Text>
+                    {item.ingredients[2].map((item, index) => {
+                        return <Text key={index}>{item}</Text>
                     })}
                 </View>
             </View>
@@ -51,8 +51,8 @@ export default function Smoothie({ route, navigation }) {
         <View style={{width: "100%", justifyContent: "flex-start", paddingHorizontal: 40, marginTop: 40}}>
             <Text style={{fontWeight: "bold", fontSize: 22}}>Tags</Text>
             <View style={{flexDirection: "row", marginTop: 20}}>
-                {item.tags.map(item => {
-                    return <Tags selected={false} select={() => {}} name={item}/>
+                {item.tags.map((item, index) => {
+                    return <Tags key={index} selected={false} select={() => {}} name={item}/>
                 })}
             </View>
         </View>
