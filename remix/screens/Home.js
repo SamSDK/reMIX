@@ -24,6 +24,12 @@ export default function Home() {
     setVisible(!visible);
   };
 
+  const [visible2, setVisible2] = useState(false);
+
+  const toggleOverlay2 = () => {
+    setVisible2(!visible2);
+  };
+
   const navigation = useNavigation();
   const [searchQuery, setSearchQuery] = React.useState('');
   const [data, setData] = React.useState([]);
@@ -79,7 +85,11 @@ export default function Home() {
             style={styles.btn}
             title="Filter"
           />
-          <AppButton style={styles.btn} title="Make your own recipe +" />
+          <AppButton
+            onPress={toggleOverlay2}
+            style={styles.btn}
+            title="Make your own recipe +"
+          />
         </View>
         {/* <ImageBackground resizeMode='' source={require("../assets/images/seamless.webp")}> */}
         {/* <View style={{width: "50%",height: 60,borderBottomRightRadius: 20, position: 'absolute', left: 0, top: 180, backgroundColor: colors.white}}></View> */}
@@ -157,6 +167,13 @@ export default function Home() {
               <Tags name="protein" />
               <Tags name="fuit" />
             </View>
+            <AppButton style={{ width: '90%', height: 70 }} title="Apply" />
+          </Overlay>
+          <Overlay
+            overlayStyle={styles.modal}
+            isVisible={visible2}
+            onBackdropPress={toggleOverlay2}
+          >
             <AppButton style={{ width: '90%', height: 70 }} title="Apply" />
           </Overlay>
         </View>
