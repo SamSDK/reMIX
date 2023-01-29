@@ -6,6 +6,7 @@ import Home from './screens/Home';
 import Landing from './screens/Landing';
 import User from './screens/User';
 import logo from './assets/images/remix.png';
+import Smoothie from './screens/Smoothie';
 
 const Stack = createStackNavigator();
 const theme = 'Light';
@@ -32,6 +33,10 @@ export default function App() {
             headerLeft: null,
             headerTitle: () => <Image style={{width: 100, height: 80}} source={logo}/>
           }} component={Home} />
+          <Stack.Screen name="Smoothie" options={{
+            headerLeft: null,
+            headerTitle: () => <Image style={{width: 100, height: 80}} source={logo}/>
+          }} component={Smoothie} />
           <Stack.Screen name="User" component={User} />
         </Stack.Navigator>
       </NavigationContainer>
