@@ -9,16 +9,23 @@ import { SearchBar, Overlay } from 'react-native-elements';
 import axios from 'axios';import Tags from '../components/Tags';
 
 export default function Home() {
-  
-    const [visible, setVisible] = useState(false);
-  
-    const toggleOverlay = () => {
-      setVisible(!visible);
-    }
-
-    const navigation = useNavigation();
-    const [searchQuery, setSearchQuery] = React.useState('');
+  const [visible, setVisible] = useState(false);
+  const [searchQuery, setSearchQuery] = React.useState('');
   const [data, setData] = React.useState([]);
+
+  const navigate = useNavigation().navigate;
+
+  const handleClick = item => {
+    navigate('Smoothie', {
+      item
+    });
+  };
+  
+  const toggleOverlay = () => {
+    setVisible(!visible);
+  }
+
+  const navigation = useNavigation();
 
   function shuffle(array) {
     return array.sort(() => Math.random() - 0.5);
@@ -26,7 +33,7 @@ export default function Home() {
 
   const getData = async () => {
     axios.get(`http://10.217.15.13:3008/api/getAll`).then(doc => {
-      setData(shuffle(doc.data).splice(0, 15));
+      setData(shuffle(doc.data));
       console.log(data);
     }).catch(e => {
       console.log(e);
@@ -55,11 +62,11 @@ export default function Home() {
         <AppButton style={styles.btn} title='Make your own recipe +'/>
       </View>
       <View style={{padding: 20, paddingTop: 20, width: "100%"}}>
-        <Text style={{fontWeight: "bold", fontSize: 24, alignSelf: "flex-start", color: colors.darkerGrey}}>Browse Recipes</Text>
+        <Text style={{fontWeight: "bold", paddingBottom: 20, fontSize: 24, alignSelf: "flex-start", color: colors.darkerGrey}}>Browse Recipes</Text>
         <FlatList
           data={data}
           contentContainerStyle={{paddingBottom: 200}}
-          renderItem={({item}) => <RecipePill info={item.info} tags={item.tags} title={item.name}/>}
+          renderItem={({item}) => <RecipePill onPress={() => handleClick(item)} info={item.info} tags={item.tags} title={item.name}/>}
           keyExtractor={item => item._id}
         />
         <Overlay overlayStyle={styles.modal} isVisible={visible} onBackdropPress={toggleOverlay}>

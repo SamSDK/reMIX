@@ -20,8 +20,8 @@ function RecipePill({ image, info, tags, title, onPress }) {
         source={smoothieIcon}
         style={{
           left: 0,
-          width: 50,
-          height: 50,
+          width: 60,
+          height: 60,
           borderBottomLeftRadius: 16,
           borderTopLeftRadius: 16,
           marginRight: 16,
@@ -49,8 +49,6 @@ const styles = StyleSheet.create({
   recipe: {
     backgroundColor: colors.white,
     borderRadius: 16,
-    borderColor: colors.primary,
-    borderWidth: 2,
     alignItems: 'center',
     height: 100,
     flexDirection: 'row',
